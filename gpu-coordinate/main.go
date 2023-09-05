@@ -31,7 +31,6 @@ func generateUnitId(n int) []int {
 	}
 	return ids
 }
-
 func main() {
 	// generate random coordinate for mimicking the coordinate from the unit
 	unitIds := generateUnitId(20)

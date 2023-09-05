@@ -2,8 +2,14 @@ gpu-coordinate:
 	@go build -o bin/gpu-coordinate gpu-coordinate/main.go
 	@./bin/gpu-coordinate
 
+# need to build the whole folder to get the binary if
+# there is main dependent on other files
 receiver:
-	@go build -o bin/receiver data-receiver/main.go
+	@go build -o bin/receiver ./data-receiver 
 	@./bin/receiver
 
-.PHONY: gpu-coordinate receiver
+calculator:
+	@go build -o bin/calculator ./distance-calculator
+	@./bin/calculator
+
+.PHONY: gpu-coordinate receiver calculator
