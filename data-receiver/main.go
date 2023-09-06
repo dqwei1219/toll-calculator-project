@@ -50,10 +50,10 @@ func (dr *DataReceiver) wsHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	dr.conn = conn
-	go dr.receiveData()
+	go dr.receiveDataLoop()
 }
 
-func (dr *DataReceiver) receiveData() {
+func (dr *DataReceiver) receiveDataLoop() {
 	fmt.Println("Start receiving data")
 	for {
 		var data types.UnitCoordinate
