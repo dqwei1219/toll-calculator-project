@@ -12,4 +12,8 @@ calculator:
 	@go build -o bin/calculator ./distance-calculator
 	@./bin/calculator
 
-.PHONY: gpu-coordinate receiver calculator
+aggregator:
+	@go build -o bin/aggregator ./aggregator
+	@./bin/aggregator
+
+.PHONY: gpu-coordinate receiver calculator aggregator
