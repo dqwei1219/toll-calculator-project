@@ -7,6 +7,7 @@ import (
 )
 
 const kafkaTopic = "gpu-coordinate"
+const Endpoint = "http://localhost:3000/aggregate"
 
 func main() {
 	var (
@@ -17,10 +18,16 @@ func main() {
 	svc, err = NewCalculatorService()
 	svc = NewLogMiddleware(svc)
 
+	// httpClient := client.NewHTTPClient(Endpoint)
+	grpcClient, err := client.NewGRPCClient(Endpoint)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	if err != nil {
 		log.Fatal(err) // not going to work if svc is nil
 	}
-	c, err := NewKafkaComsumer(kafkaTopic, svc, client.NewClient("http://localhost:3000/aggregate"))
+	c, err := NewKafkaComsumer(kafkaTopic, svc, grpcClient)
 	if err != nil {
 		log.Fatal(err)
 	}

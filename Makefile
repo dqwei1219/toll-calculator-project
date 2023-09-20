@@ -16,4 +16,8 @@ aggregator:
 	@go build -o bin/aggregator ./aggregator
 	@./bin/aggregator
 
+proto:
+# PATH="${PATH}:${HOME}/go/BIN"
+	protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative types/ptypes.proto
+
 .PHONY: gpu-coordinate receiver calculator aggregator

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "github.com/dqwei1219/toll-calculator-project/types";
+
+service DistAggregator {
+  rpc AggregateDist(AggregateDistReq) returns (None);
+}
+
+message None {}
+
+message AggregateDistReq {
+  int32 UnitId = 1;
+  double Value = 2;
+  int64 Unix = 3;
+}
